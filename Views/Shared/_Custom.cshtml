@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SEA_ApiTest</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/SEA_ApiTest.styles.css" asp-append-version="true" />
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body>
+    <header>
+
+    </header>
+
+    @RenderBody()
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2023 - SEA_ApiTest - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/lodash.js/lodash.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/vue/vue.global.js"></script>
+    <script src="~/lib/base64.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/libs.js" asp-append-version="true"></script>
+    <script src="~/js/global.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

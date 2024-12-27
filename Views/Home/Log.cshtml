@@ -1,0 +1,64 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_Custom";
+}
+@section Styles{
+    <style>
+
+        #app {
+            padding:10px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr;
+            gap: 0px 0px;
+            grid-template-areas:
+                "aa bb bb";
+        }
+
+        .aa {
+            grid-area: aa;
+        }
+
+        .bb {
+            grid-area: bb;
+        }
+    </style>
+}
+@section Scripts{
+    <script src="~/js/page/log.js" asp-append-version="true"></script>
+}
+
+<div id="app" class="" >
+    
+    <div class="aa" style="">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="搜尋..."  aria-describedby="button-search" 
+            v-model="searchFile">
+        </div>
+        <div id="logList" style="overflow-y:auto;height:800px;">
+            <ul class="list-group" >
+                <template v-for="(name,i) in logFiles">
+                    <li class="list-group-item" v-on:click="onSelectName(name)">
+                        <input class="form-check-input me-1" type="radio"
+                               v-bind:value="name" aria-label="" v-model="selectName">
+                        {{name}}
+                    </li>
+                </template>
+            </ul>
+        </div>
+    </div>
+
+    <div class="bb" style="margin-left:20px;">
+        <input type="text" class="form-control" placeholder="搜尋..." v-model="searchLog">
+        <div style="overflow-y:auto;height:800px;" >
+            <template v-for="log in logMsg">
+                <span >
+                    {{log}}
+                </span><br />
+            </template>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,31 @@
+﻿using SEA_ApiTest.Extension;
+using SEA_ApiTest.Models.AuthorizeDB;
+using Microsoft.AspNetCore.Mvc.Filters;
+
+namespace SEA_ApiTest.Models.Attribute
+{
+    public abstract class BaseActionFilter : IActionFilter
+    {
+        protected GameControlReadDbContext _dbr;        
+        protected HttpContext httpContext;
+        public BaseActionFilter(GameControlReadDbContext dbr)
+        {
+            _dbr = dbr;
+        }
+
+        public void OnActionExecuting(ActionExecutingContext context)
+        {
+            httpContext = context.HttpContext;
+            if (this.hasInterface<IFilterStart>())
+                ((IFilterStart)this).OnActionStart();
+            else if (this.hasInterface<IFilterStartWithContext>())
+                ((IFilterStartWithContext)this).OnActionStart(context);
+        }
+
+        public virtual void OnActionExecuted(ActionExecutedContext context)
+        {
+            
+        }
+
+    }
+}
